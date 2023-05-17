@@ -1,0 +1,30 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type ChildNodes {
+  name: String!
+  nodeId: String!
+  parent: Nodes!
+  parentId: String!
+  previousSiblingId: String!
+}
+
+type Mutation {
+  createLocationPhoto(file: Upload!): [Nodes!]!
+}
+
+type Nodes {
+  children: [ChildNodes!]!
+  name: String!
+  nodeId: String!
+  parentId: String!
+  previousSiblingId: String!
+}
+
+type Query {
+  sayHello: String!
+}
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
