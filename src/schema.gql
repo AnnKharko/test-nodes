@@ -2,27 +2,27 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
-type ChildNodes {
+input CreateNodesDto {
   name: String!
-  nodeId: String!
-  parent: Nodes!
-  parentId: String!
-  previousSiblingId: String!
+  parentId: String
+  previousSiblingId: String
 }
 
 type Mutation {
-  createLocationPhoto(file: Upload!): [Nodes!]!
+  createNodes(createNodesDto: CreateNodesDto!): Nodes!
+  createNodesViaFile(file: Upload!): [Nodes!]!
 }
 
 type Nodes {
-  children: [ChildNodes!]!
+  children: [Nodes!]
   name: String!
   nodeId: String!
-  parentId: String!
-  previousSiblingId: String!
+  parentId: String
+  previousSiblingId: String
 }
 
 type Query {
+  getNodes: [Nodes!]!
   sayHello: String!
 }
 

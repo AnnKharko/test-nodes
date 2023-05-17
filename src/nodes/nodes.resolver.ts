@@ -4,6 +4,7 @@ import { Nodes } from './entity/nodes.entity';
 import { GraphQLUpload } from 'graphql-upload';
 // import * as GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
 import { Stream } from 'stream';
+import { CreateNodesDto } from './dto/create-nodes.dto';
 
 export interface IFileUpload {
   filename: string;
@@ -22,9 +23,22 @@ export class NodesResolver {
   }
 
   @Mutation(() => [Nodes])
-  public async createLocationPhoto(
+  public async createNodesViaFile(
     @Args('file', { type: () => GraphQLUpload }) file: IFileUpload,
   ): Promise<Nodes> {
     return this.nodesService.createNodesViaFile(file);
+  }
+
+  @Mutation(() => Nodes)
+  public async createNodes(
+    @Args('createNodesDto', { type: () => CreateNodesDto })
+    createNodesDto: CreateNodesDto,
+  ): Promise<Nodes> {
+    return this.nodesService.createNodes(createNodesDto);
+  }
+
+  @Query(() => [Nodes])
+  getNodes(): Promise<Nodes[]> {
+    return this.nodesService.getNodes();
   }
 }
