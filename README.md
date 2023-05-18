@@ -25,6 +25,25 @@
 ## Description
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+To run the program, you need:
+ - to clone the project, (git clone  https://github.com/AnnKharko/test-nodes.git)
+ - install all dependencies, (npm install)
+ - create an .env file, the content of which should be similar to .env.example.
+ - run the migration (npm run migration:run)
+ - run the program  (npm run start:dev)
+ - open the graphql playground at the address http://localhost:3000/graphql 
+
+the test task can be checked in 3 ways:
+ -  using database (namely with PostgreSQL), 
+
+ i.e. create several instances of node with help mutation createNodes(), and get all of them using query getNodes()
+
+ - deal only with an array 
+
+ you can also use the convertArray() method, which accepts an array and returns the expected one
+
+ or load data from a file using mutation readNodeFromFile() which accepts a json file with provided array of node and returns a modified array (this can be checked with Postman )
+
 
 ## Installation
 

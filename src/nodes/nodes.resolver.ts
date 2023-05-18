@@ -24,11 +24,11 @@ export class NodesResolver {
   }
 
   @Mutation(() => [Nodes])
-  public async ReadNodesFromFile(
+  public async readNodesFromFile(
     @Args('file', { type: () => GraphQLUpload })
     file: IFileUpload,
   ): Promise<Nodes[]> {
-    return this.nodesService.ReadNodesFromFile(file);
+    return this.nodesService.readNodesFromFile(file);
   }
 
   @Mutation(() => Nodes)

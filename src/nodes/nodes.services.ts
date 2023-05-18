@@ -90,7 +90,7 @@ export class NodesService {
     return this.loadChildren(parents, nodeByParentId);
   }
 
-  public async ReadNodesFromFile(file: IFileUpload) {
+  public async readNodesFromFile(file: IFileUpload) {
     await new Promise(async (resolve, reject) =>
       file
         .createReadStream()

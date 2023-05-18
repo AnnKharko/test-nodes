@@ -16,9 +16,9 @@ input CreateNodesDto {
 }
 
 type Mutation {
-  ReadNodesFromFile(file: Upload!): [Nodes!]!
   convertArray(arrayNodes: [ArrayNodesDto!]!): [Nodes!]!
   createNodes(createNodesDto: CreateNodesDto!): Nodes!
+  readNodesFromFile(file: Upload!): [Nodes!]!
 }
 
 type Nodes {
