@@ -4,8 +4,6 @@ import { config } from 'dotenv';
 config();
 
 const options = (): DataSourceOptions => {
-  console.log(__dirname + '/../../**/*.entity.ts');
-
   return {
     type: 'postgres',
     host: process.env.DATABASE_HOST,
@@ -19,7 +17,5 @@ const options = (): DataSourceOptions => {
     migrations: [__dirname + '/migrations/**/*{.ts,.js}'],
   };
 };
-
-console.log('options()==', options());
 
 export const appDataSource = new DataSource(options());

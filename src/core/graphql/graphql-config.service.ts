@@ -11,8 +11,7 @@ export class GqlConfigService implements GqlOptionsFactory {
     return {
       autoSchemaFile: 'src/schema.gql',
       sortSchema: true,
-      // uploads: false,
-      // debug: this.configService.get('graphql.debug'),
+      debug: this.configService.get('graphql.debug'),
       playground: this.configService.get('GRAPHQL_PLAYGROUND') || true,
       context: ({ req, connection }) =>
         connection ? { req: connection.context } : { req },

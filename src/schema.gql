@@ -2,6 +2,13 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+input ArrayNodesDto {
+  name: String!
+  nodeId: String!
+  parentId: String
+  previousSiblingId: String
+}
+
 input CreateNodesDto {
   name: String!
   parentId: String
@@ -9,8 +16,9 @@ input CreateNodesDto {
 }
 
 type Mutation {
+  ReadNodesFromFile(file: Upload!): [Nodes!]!
+  convertArray(arrayNodes: [ArrayNodesDto!]!): [Nodes!]!
   createNodes(createNodesDto: CreateNodesDto!): Nodes!
-  createNodesViaFile(file: Upload!): [Nodes!]!
 }
 
 type Nodes {

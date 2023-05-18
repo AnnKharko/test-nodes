@@ -7,14 +7,13 @@ import {
   PrimaryGeneratedColumn,
   JoinColumn,
 } from 'typeorm';
-// import { ChildNodes } from './child-nodes.entity';
 
 @ObjectType()
 @Entity('nodes')
 export class Nodes {
   @Field(() => String)
   @PrimaryGeneratedColumn()
-  nodeId: number;
+  nodeId: string;
 
   @Field(() => String)
   @Column()
@@ -28,20 +27,12 @@ export class Nodes {
   @Column({ nullable: true })
   previousSiblingId?: string;
 
-  // @Field(() => [ChildNodes])
-  // @OneToMany(() => ChildNodes, (childNodes) => childNodes.parent, {
-  //   eager: true,
-  // })
-  // children: ChildNodes[];
-
   @Field(() => [Nodes], { nullable: true })
   @OneToMany(() => Nodes, (childNodes) => childNodes.parent, {
-    // eager: true,
     nullable: true,
   })
   children?: Nodes[];
 
-  // @Field(() => Nodes, { nullable: true })
   @ManyToOne(() => Nodes, (parentNode) => parentNode.children, {
     nullable: true,
   })

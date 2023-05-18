@@ -5,6 +5,7 @@ import { GraphQLUpload } from 'graphql-upload';
 // import * as GraphQLUpload from 'graphql-upload/GraphQLUpload.js';
 import { Stream } from 'stream';
 import { CreateNodesDto } from './dto/create-nodes.dto';
+import { ArrayNodesDto } from './dto/array-nodes.dto';
 
 export interface IFileUpload {
   filename: string;
@@ -23,10 +24,11 @@ export class NodesResolver {
   }
 
   @Mutation(() => [Nodes])
-  public async createNodesViaFile(
-    @Args('file', { type: () => GraphQLUpload }) file: IFileUpload,
-  ): Promise<Nodes> {
-    return this.nodesService.createNodesViaFile(file);
+  public async ReadNodesFromFile(
+    @Args('file', { type: () => GraphQLUpload })
+    file: IFileUpload,
+  ): Promise<Nodes[]> {
+    return this.nodesService.ReadNodesFromFile(file);
   }
 
   @Mutation(() => Nodes)
@@ -40,5 +42,13 @@ export class NodesResolver {
   @Query(() => [Nodes])
   getNodes(): Promise<Nodes[]> {
     return this.nodesService.getNodes();
+  }
+
+  @Mutation(() => [Nodes])
+  convertArray(
+    @Args('arrayNodes', { type: () => [ArrayNodesDto] })
+    arrayNodes: ArrayNodesDto[],
+  ): Nodes[] {
+    return this.nodesService.convertArray(arrayNodes);
   }
 }
